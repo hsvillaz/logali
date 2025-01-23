@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@openui5/ts-types": "^1.132.1"
+  },
+  "dependencies": {
+    "@sapui5/ts-types": "^1.131.1"
+  }
+}

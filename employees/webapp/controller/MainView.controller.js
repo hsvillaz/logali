@@ -1,10 +1,51 @@
+//@ts-nocheck
 sap.ui.define([
     "sap/ui/core/mvc/Controller"
-], (Controller) => {
-    "use strict";
+],
+    /**
+    * @param {typeof sap.ui.core.mvc.Controller} Controller
+    */
 
-    return Controller.extend("logali.employees.controller.MainView", {
-        onInit() {
+    (Controller) => {
+        "use strict";
+
+        function myCheck() {
+            var inputEmployee = this.byId("inputEmployee");
+            var valueEmployee = inputEmployee.getValue();
+
+            if (valueEmployee.length === 6) {
+                //inputEmployee.setDescription("OK");
+                this.getView().byId("labelCountry").setVisible(true);
+                this.getView().byId("slCountry").setVisible(true);
+            } else {
+                //inputEmployee.setDescription("Not OK");
+                this.getView().byId("labelCountry").setVisible(false);
+                this.getView().byId("slCountry").setVisible(false);
+            };
         }
+
+        // return Controller.extend("logali.employees.controller.MainView", {
+        //     onInit() {           
+        //     }
+        
+        var Main = Controller.extend("logali.employees.controller.MainView", {});
+
+        Main.prototype.onValidate = myCheck;
+
+        //Main.prototype.onValidate = function(){
+        //     var inputEmployee = this.byId("inputEmployee");
+        //     var valueEmployee = inputEmployee.getValue();
+
+        //     if(valueEmployee.length === 6){
+        //         //inputEmployee.setDescription("OK");
+        //         this.getView().byId("labelCountry").setVisible(true);
+        //         this.getView().byId("slCountry").setVisible(true);
+        //     } else {
+        //         //inputEmployee.setDescription("Not OK");
+        //         this.getView().byId("labelCountry").setVisible(false);
+        //         this.getView().byId("slCountry").setVisible(false);
+        //     }
+        // };
+
+        return Main;
     });
-});
