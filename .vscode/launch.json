@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+"configurations": [
+    {
+        "name": "employees-config1",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder}/employees",
+        "runtimeExecutable": "npx",
+        "windows": {
+            "runtimeExecutable": "npx.cmd"
+        },
+        "runtimeArgs": [
+            "fiori",
+            "run"
+        ],
+        "args": [
+            "--open",
+            "index.html"
+        ],
+        "console": "internalConsole",
+        "internalConsoleOptions": "openOnSessionStart",
+        "outputCapture": "std",
+        "env": {
+            "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/logali/employees\"}",
+            "FIORI_TOOLS_BACKEND_CONFIG": "[{\"scp\":true,\"path\":\"/v2\",\"url\":\"https://services.odata.org\",\"destination\":\"Northwind\"}]"
+        }
+    }
+]
+}
