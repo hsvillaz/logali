@@ -6,7 +6,7 @@
         <content>
             <HBox>
                 <Label id="labelEmployee" labelFor="inputEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin"/>
-                <Input id="inputEmployee" maxLength="6" width="200px" class="sapUiSmallMarginEnd" liveChange="onValidate"/>
+                <Input id="inputEmployee" maxLength="6" width="200px" class="sapUiSmallMarginEnd" liveChange="onValidate" required="true"/>
                 <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="false"/>
                 <Select id="slCountry" forceSelection="false" visible="false">
                     <items>
