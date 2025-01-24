@@ -1,0 +1,73 @@
+{
+    "EmployeeId": "",
+    "Countrykey": "",
+    "ListCountry": [
+        {
+            "Key": "US",
+            "Text": "Estados Unidos"
+        },
+        {
+            "Key": "UK",
+            "Text": "Reino Unido"
+        },
+        {
+            "Key": "ES",
+            "Text": "España"
+        },
+        {
+            "Key": "CO",
+            "Text": "Colombia"
+        },
+        {
+            "Key": "PR",
+            "Text": "Peru"
+        }
+    ],
+    "Employees": [
+        {
+            "EmployeeID": "1",
+            "LastName": "Garcia Lopez",
+            "FirstName": "Maria",
+            "Country": "ES",
+            "City": "Madrid",
+            "PostalCode": "28021",
+            "Orders": [
+                {
+                    "OrderID": "208",
+                    "Freight": "65",
+                    "ShipAddress": "Calle Alcala"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "2",
+            "LastName": "Cuartas Jimenez",
+            "FirstName": "Jose Rodrigo",
+            "Country": "UK",
+            "City": "Bogota",
+            "PostalCode": "28021",
+            "Orders": [
+                {
+                    "OrderID": "209",
+                    "Freight": "66",
+                    "ShipAddress": "Calle 155# 9 - 50 Casa 117"
+                }
+            ]
+        },
+        {
+            "EmployeeID": "3",
+            "LastName": "Villa Zuluaga",
+            "FirstName": "Holber Sneyder",
+            "Country": "US",
+            "City": "New York",
+            "PostalCode": "28077",
+            "Orders": [
+                {
+                    "OrderID": "210",
+                    "Freight": "66",
+                    "ShipAddress": "Cra. 71 # 94 - 136"
+                }
+            ]
+        }
+    ]
+}
