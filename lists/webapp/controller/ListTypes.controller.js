@@ -100,6 +100,7 @@ sap.ui.define([
             var products = model.getProperty("/Products");
 
             products.splice(indexSelectedRow, 1);
+            
             model.refresh();
 
         };
