@@ -17,25 +17,40 @@ sap.ui.define([
 
         function onInit() {
 
-            var oJSONModel = new sap.ui.model.json.JSONModel();
-            var oView = this.getView();
-            var i18nBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 
-            oJSONModel.loadData("./localService/mockdata/Employees.json", false);
-            oView.setModel(oJSONModel);
+            var oView = this.getView();
+            // var i18nBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+
+            var oJSONModelEmpl = new sap.ui.model.json.JSONModel();
+            oJSONModelEmpl.loadData("./localService/mockdata/Employees.json", false);
+            oView.setModel(oJSONModelEmpl, "jsonEmployees");
+
+            var oJSONModelCountries = new sap.ui.model.json.JSONModel();
+            oJSONModelCountries.loadData("./localService/mockdata/Countries.json", false);
+            oView.setModel(oJSONModelCountries, "jsonCountries");
+
+            var oJSONModelConfig = new sap.ui.model.json.JSONModel({
+                visibleID: true,
+                visibleName: true,
+                visibleCountry: true,
+                visibleCity: false,
+                visibleBtnShowCity: true,
+                visibleBtnHideCity: false
+            });
+            oView.setModel(oJSONModelConfig, "jsonModelConfig");
         };
 
         function onFilter() {
 
-            var oJSON = this.getView().getModel().getData();
+            var oJSONCountries = this.getView().getModel("jsonCountries").getData();
             var filters = [];
 
-            if (oJSON.EmployeeId !== "") {
-                filters.push(new Filter("EmployeeID", FilterOperator.EQ, oJSON.EmployeeId));
+            if (oJSONCountries.EmployeeId) {
+                filters.push(new Filter("EmployeeID", FilterOperator.EQ, oJSONCountries.EmployeeId));
             };
 
-            if (oJSON.CountryKey !== "") {
-                filters.push(new Filter("Country", FilterOperator.EQ, oJSON.CountryKey));
+            if (oJSONCountries.CountryKey) {
+                filters.push(new Filter("Country", FilterOperator.EQ, oJSONCountries.CountryKey));
             };
 
             var oList = this.getView().byId("tableEmployee");
@@ -43,20 +58,36 @@ sap.ui.define([
             oBinding.filter(filters);
         };
 
-        function onClearFilter(){
+        function onClearFilter() {
 
-            var oModel = this.getView().getModel();
+            var oModel = this.getView().getModel("jsonCountries");
             oModel.setProperty("/EmployeeId", "");
             oModel.setProperty("/CountryKey", "");
         };
 
-        function showPostalCode(oEvent){
+        function showPostalCode(oEvent) {
 
             var itemPressed = oEvent.getSource();
-            var oContext = itemPressed.getBindingContext();
+            var oContext = itemPressed.getBindingContext("jsonEmployees");
             var objectContext = oContext.getObject();
 
             MessageToast.show(objectContext.PostalCode);
+        };
+
+        function onShowCity() {
+
+            var oJSONModelConfig = this.getView().getModel("jsonModelConfig");
+            oJSONModelConfig.setProperty("/visibleCity", true);
+            oJSONModelConfig.setProperty("/visibleBtnShowCity", false);
+            oJSONModelConfig.setProperty("/visibleBtnHideCity", true);
+        };
+        
+        function onHideCity() {
+
+            var oJSONModelConfig = this.getView().getModel("jsonModelConfig");
+            oJSONModelConfig.setProperty("/visibleCity", false);
+            oJSONModelConfig.setProperty("/visibleBtnShowCity", true);
+            oJSONModelConfig.setProperty("/visibleBtnHideCity", false);
         };
 
         var Main = Controller.extend("logali.employees.controller.MainView", {});
@@ -65,6 +96,8 @@ sap.ui.define([
         Main.prototype.onFilter = onFilter;
         Main.prototype.onClearFilter = onClearFilter;
         Main.prototype.showPostalCode = showPostalCode;
+        Main.prototype.onShowCity = onShowCity;
+        Main.prototype.onHideCity = onHideCity;
 
         return Main;
     });
