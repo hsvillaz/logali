@@ -110,8 +110,7 @@
         },
         "rootView": {
             "viewName": "logali.employees.view.Main",
-            "type": "XML",
-            "id": "Main"
+            "type": "XML"
         }
     }
 }

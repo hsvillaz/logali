@@ -93,7 +93,8 @@ sap.ui.define([
             this._bus.publish("flexible", "showEmployee", path);
         };
 
-        var Main = Controller.extend("logali.employees.controller.MasterEmployee", {});
+        var Main = Controller.extend("logali.employees.controller.MasterEmployee", {
+        });
 
         Main.prototype.onInit = onInit;
         Main.prototype.onFilter = onFilter;

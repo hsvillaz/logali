@@ -44,6 +44,10 @@ sap.ui.define([
             var detailView = this.getView().byId("detailEmployeeView");
             detailView.bindElement("jsonEmployees>" + path);
             this.getView().getModel("jsonLayout").setProperty("/ActiveKey", "TwoColumnsMidExpanded");
+
+            var incidenceModel = new sap.ui.model.json.JSONModel([]);
+            detailView.setModel(incidenceModel, "incidenceModel");
+            detailView.byId("tableIncidence").removeAllContent();
         };
 
         var Main = Controller.extend("logali.employees.controller.Main", {});
